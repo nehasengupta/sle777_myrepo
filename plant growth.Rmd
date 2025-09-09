@@ -101,7 +101,7 @@ plot(cars$speed, cars$dist,
      pch = 19,
      col = "blue")
   
-
+ 
 ```
 
 ## Interpretation 
