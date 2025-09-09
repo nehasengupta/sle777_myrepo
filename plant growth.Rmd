@@ -1,0 +1,113 @@
+---
+title: "plant growth"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+sdsd
+```{r}
+ 
+data(PlantGrowth)
+
+class(PlantGrowth)
+
+head(PlantGrowth)
+
+str(PlantGrowth)
+
+mean(PlantGrowth)
+
+class(PlantGrowth)
+
+Plant.ctrl <- subset(PlantGrowth, group == "ctrl")[,-2] 
+
+mean(Plant.ctrl)
+#5.032
+
+plant.trt1 <- subset(PlantGrowth, group == "trt1")[,-2]
+
+mean(plant.trt1)
+
+plant.trt2 <- subset(PlantGrowth, group == "trt2")[,-2]
+                                                  
+
+mean(plant.trt2)
+
+plant.ctrl <- subset(PlantGrowth, group == "ctrl")[,-2]
+median(plant.ctrl)
+
+plant.trt1 <- subset(PlantGrowth, group == "trt1")[,-2]
+median(plant.trt1)
+
+plant.trt2 <- subset(PlantGrowth, group == "trt2")[,-2]
+median(plant.trt2)
+
+
+
+
+```
+
+
+```{r}
+# boxplot of ctrl,trt1,trt2
+ctrl <- PlantGrowth[grep("ctrl",rownames(PlantGrowth)),]
+trt1 <- PlantGrowth[grep("trt1",rownames(PlantGrowth)),]
+trt2 <- PlantGrowth[grep("trt2",rownames(PlantGrowth))]
+
+boxplot(weight ~group, data=PlantGrowth,
+        ylab="Weight",
+        xlab="Treatmens",
+        main="Plan Growth under different treatments")
+
+```
+
+------
+
+# Cars dataset
+
+```{r}
+head(cars)
+
+summary(cars)
+
+plot(cars$speed, cars$dist,
+     main = "Speed vs Distance",
+     xlab = "Speed",
+     ylab = "Distance",
+     pch = 19,
+     col = "blue")
+  
+
+```
+
+## Interpretation 
+This scatter plot shows a positive relationship between car speed and stopping distance — as speed increases, the distance required to stop generally increases. The data points suggest a non-linear pattern, indicating that stopping distance grows more rapidly at higher speeds.
+
+```{r}
+sessionInfo()
+```
+
